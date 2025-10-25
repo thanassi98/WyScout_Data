@@ -181,7 +181,7 @@ def page_data_explorer(df):
     
     # Mostrar datos filtrados
     st.subheader("📋 Datos Filtrados")
-    st.dataframe(filtered_df, use_container_width=True, height=400)
+    st.dataframe(filtered_df, width="stretch", height=400)
     
     # Botones de descarga
     col1, col2 = st.columns(2)
@@ -419,7 +419,7 @@ def page_pizza_chart(df):
             comparison_data.append(row_data)
         
         comparison_df = pd.DataFrame(comparison_data)
-        st.dataframe(comparison_df, use_container_width=True)
+        st.dataframe(comparison_df, width="stretch")
     
     # Análisis adicional
     with st.expander("📊 Análisis Estadístico de la Posición"):
@@ -449,7 +449,7 @@ def page_pizza_chart(df):
         clean_metric = clean_numeric_column(position_df[metric_to_show])
         position_df["_temp_metric"] = clean_metric
         top_players = position_df.nlargest(5, "_temp_metric")[["Player", "Team", metric_to_show]]
-        st.dataframe(top_players, use_container_width=True, hide_index=True)
+        st.dataframe(top_players, width="stretch", hide_index=True)
 
 # -------------------- PAGE 3: SCATTER PLOTS MEJORADO --------------------
 def page_scatter_plots(df):
@@ -761,7 +761,7 @@ def page_advanced_analysis(df):
                 
                 st.dataframe(
                     top_players.style.background_gradient(subset=["Score"], cmap="RdYlGn"),
-                    use_container_width=True,
+                    width="stretch",
                     hide_index=True
                 )
     
@@ -850,7 +850,7 @@ def page_advanced_analysis(df):
                 
                 st.dataframe(
                     comparison_df.style.apply(highlight_better, axis=1),
-                    use_container_width=True,
+                    width="stretch",
                     hide_index=True
                 )
 
@@ -939,4 +939,4 @@ def main():
     pages[page](df)
 
 if __name__ == "__main__":
-    main()
+    main() 
