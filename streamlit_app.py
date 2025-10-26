@@ -505,7 +505,7 @@ def page_scatter_plots(df):
         with col3:
             color_by = st.selectbox(
                 "Colorear por:",
-                ["Team", "Main Position", "League", "Ninguno"],
+                ["Team", "Main Position", "Ninguno"],
                 index=0
             )
     
@@ -558,7 +558,7 @@ def page_scatter_plots(df):
                         x=x_col,
                         y=y_col,
                         hover_name="Player" if "Player" in filtered_df.columns else None,
-                        hover_data=["Team", "League"] if all(c in filtered_df.columns for c in ["Team", "League"]) else None,
+                        hover_data=["Team"] if all(c in filtered_df.columns for c in ["Team"]) else None,
                         color=color_by if color_by != "Ninguno" and color_by in filtered_df.columns else None,
                         title=title,
                         template="plotly_white",
@@ -651,7 +651,7 @@ def page_scatter_plots(df):
                     x=x_axis,
                     y=y_axis,
                     hover_name="Player" if "Player" in filtered_df.columns else None,
-                    hover_data=["Team", "League"] if all(c in filtered_df.columns for c in ["Team", "League"]) else None,
+                    hover_data=["Team"] if all(c in filtered_df.columns for c in ["Team"]) else None,
                     color=color_by if color_by != "Ninguno" and color_by in filtered_df.columns else None,
                     title=f"{x_axis} vs {y_axis}",
                     template="plotly_white",
@@ -690,7 +690,7 @@ def page_advanced_analysis(df):
     
     analysis_type = st.selectbox(
         "Selecciona tipo de análisis:",
-        ["Ranking Multi-Métrica", "Análisis de Clusters", "Comparador de Jugadores", "Detector de Outliers"]
+        ["Ranking Multi-Métrica", "Comparador de Jugadores"]
     )
     
     if analysis_type == "Ranking Multi-Métrica":
